@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { SharedModule } from '../shared/shared.module';
+
 import { ColorHomeComponent } from './components/color-home/color-home.component';
 
 
@@ -11,7 +14,8 @@ import { ColorHomeComponent } from './components/color-home/color-home.component
     ColorHomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
   ],
   // allow templates in other modules to
   // call ColorHomeComponent
