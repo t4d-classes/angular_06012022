@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 
 import { ColorHomeComponent } from './components/color-home/color-home.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
 
 
 
@@ -11,7 +12,8 @@ import { ColorHomeComponent } from './components/color-home/color-home.component
   // register a component in the declarations so
   // I can call it from a template
   declarations: [
-    ColorHomeComponent
+    ColorHomeComponent,
+    ColorListComponent
   ],
   imports: [
     CommonModule,
