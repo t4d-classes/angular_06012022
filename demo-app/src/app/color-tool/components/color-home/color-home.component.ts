@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Color } from '../../models/colors';
+import { Color, NewColor } from '../../models/colors';
 
 @Component({
   // how I call the component
@@ -21,6 +21,18 @@ export class ColorHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  doAddColor(color: NewColor) {
+
+    this.colors = [
+      ...this.colors,
+      {
+        ...color,
+        id: Math.max(...this.colors.map(c => c.id), 0) + 1,
+      },
+    ];
+
   }
 
 }
