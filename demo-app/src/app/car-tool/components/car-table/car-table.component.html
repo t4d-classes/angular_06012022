@@ -7,17 +7,14 @@
       <th>Year</th>
       <th>Color</th>
       <th>Price</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let car of cars">
-      <td>{{car.id}}</td>
-      <td>{{car.make}}</td>
-      <td>{{car.model}}</td>
-      <td>{{car.year}}</td>
-      <td>{{car.color}}</td>
-      <td>{{car.price}}</td>
-      <td><button (click)="doDeleteCar(car.id)">Delete</button></td>
+    <tr *ngIf="!cars?.length">
+      <td colspan="7">No cars.</td>
     </tr>
+    <tr class="app-car-view-row" *ngFor="let car of cars" [car]="car"
+      (deleteCar)="doDeleteCar($event)"></tr>
   </tbody>
 </table>
