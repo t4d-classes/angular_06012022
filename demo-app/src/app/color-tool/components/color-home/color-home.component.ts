@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs';
 
 import { Color, NewColor } from '../../models/colors';
 import { ColorsDataService } from '../../services/colors-data.service';
@@ -30,13 +31,14 @@ export class ColorHomeComponent implements OnInit {
 
   doAddColor(color: NewColor) {
 
-    this.colors = [
-      ...this.colors,
-      {
-        ...color,
-        id: Math.max(...this.colors.map(c => c.id), 0) + 1,
-      },
-    ];
+    this.colorsData.append(color)
+      .pipe(
+        switchMap(() => this.colorsData.all())
+      )
+      .subscribe({
+        next: colors => this.colors = colors,
+      });
+
 
   }
 
