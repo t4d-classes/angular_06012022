@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Car } from '../../models/cars';
 
 @Component({
-  selector: '.car-edit-row',
+  selector: '.app-car-edit-row',
   templateUrl: './car-edit-row.component.html',
   styleUrls: ['./car-edit-row.component.css']
 })

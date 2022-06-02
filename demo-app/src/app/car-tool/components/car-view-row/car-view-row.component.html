@@ -4,4 +4,7 @@
 <td>{{car.year}}</td>
 <td>{{car.color}}</td>
 <td>{{car.price}}</td>
-<td><button (click)="doDeleteCar()">Delete</button></td>
+<td>
+  <button (click)="editCar.emit(car.id)">Edit</button>
+  <button (click)="deleteCar.emit(car.id)">Delete</button>
+</td>
