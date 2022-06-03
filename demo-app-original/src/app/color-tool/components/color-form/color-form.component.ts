@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { NewColor, ColorForm } from '../../models/colors';
+import { NewColor } from '../../models/colors';
 
 @Component({
   selector: 'app-color-form',
@@ -15,7 +15,7 @@ export class ColorFormComponent implements OnInit {
   @Output()
   submitColor = new EventEmitter<NewColor>();
 
-  colorForm!: FormGroup<ColorForm>;
+  colorForm!: FormGroup;
 
   // private fb: FormBuilder;
 
@@ -26,7 +26,7 @@ export class ColorFormComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.colorForm = this.fb.nonNullable.group({
+    this.colorForm = this.fb.group({
       name: '', hexcode: '',
     });
   }

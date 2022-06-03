@@ -1,3 +1,4 @@
+import { AbstractControl, FormControl } from "@angular/forms";
 
 
 export type Color = {
@@ -7,3 +8,8 @@ export type Color = {
 };
 
 export type NewColor = Omit<Color, "id">;
+
+export type ColorForm = {
+  name: FormControl<string>,
+  hexcode: FormControl<string>,
+};

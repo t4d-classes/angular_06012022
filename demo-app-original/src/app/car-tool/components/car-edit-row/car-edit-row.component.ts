@@ -2,7 +2,7 @@ import {
   Component, OnInit, Input,
   Output, EventEmitter,
 } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { Car } from '../../models/cars';
 
@@ -22,9 +22,9 @@ export class CarEditRowComponent implements OnInit {
   @Output()
   cancelCar = new EventEmitter<void>();
 
-  editCarForm!: UntypedFormGroup;
+  editCarForm!: FormGroup;
 
-  constructor(private fb: UntypedFormBuilder) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.editCarForm = this.fb.group({

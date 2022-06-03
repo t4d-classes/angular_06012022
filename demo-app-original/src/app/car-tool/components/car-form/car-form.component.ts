@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { NewCar } from '../../models/cars';
 
 @Component({
@@ -12,12 +12,12 @@ export class CarFormComponent implements OnInit {
   @Input()
   buttonText = "Submit Car";
 
-  carForm!: UntypedFormGroup;
+  carForm!: FormGroup;
 
   @Output()
   submitCar = new EventEmitter<NewCar>();
 
-  constructor(private fb: UntypedFormBuilder) { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.carForm = this.fb.group({
