@@ -1,5 +1,9 @@
 <app-tool-header [headerText]="headerText"></app-tool-header>
 
+<div *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
 <app-color-list [colors]="colors"></app-color-list>
 
 <app-color-form
