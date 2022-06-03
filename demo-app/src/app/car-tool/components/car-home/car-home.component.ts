@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { switchMap } from 'rxjs';
 
 import { Car, NewCar } from '../../models/cars';
-import { CarsDataService } from '../../services/cars-data.service';
+
+import { CarToolStoreService } from '../../services/car-tool-store.service';
 
 @Component({
   selector: 'app-car-home',
@@ -13,64 +14,38 @@ export class CarHomeComponent implements OnInit {
 
   headerText = "Car Tool";
 
-  cars: Car[] = [];
+  get cars$() {
+    return this.carToolStore.cars$;
+  }
 
-  editCarId = -1;
+  get editCarId$() {
+    return this.carToolStore.editCarId$;
+  }
 
-  constructor(private carsData: CarsDataService) { }
+  constructor(private carToolStore: CarToolStoreService) { }
 
   ngOnInit(): void {
-    this.carsData.all().subscribe({
-      next: cars => this.cars = cars,
-    });
+    this.carToolStore.refreshCars();
   }
 
   doEditCar(carId: number) {
-    this.editCarId = carId;
+    this.carToolStore.editCar(carId);
   }
 
   doCancelCar() {
-    this.editCarId = -1;
+    this.carToolStore.cancelCar();
   }
 
   doAddCar(car: NewCar) {
-    this.carsData.append(car)
-      .pipe(
-        switchMap(() => this.carsData.all())
-      )
-      .subscribe({
-        next: cars => {
-          this.cars = cars;
-          this.editCarId = -1;
-        }
-      });
+    this.carToolStore.addCar(car);
   }
 
   doSaveCar(car: Car) {
-    this.carsData.replace(car)
-      .pipe(
-        switchMap(() => this.carsData.all())
-      )
-      .subscribe({
-        next: cars => {
-          this.cars = cars;
-          this.editCarId = -1;
-        }
-      });
+    this.carToolStore.saveCar(car);
   }
 
   doDeleteCar(carId: number) {
-    this.carsData.remove(carId)
-      .pipe(
-        switchMap(() => this.carsData.all())
-      )
-      .subscribe({
-        next: cars => {
-          this.cars = cars;
-          this.editCarId = -1;
-        }
-      });
-    this.editCarId = -1;
+    this.carToolStore.deleteCar(carId);
   }
 
 }

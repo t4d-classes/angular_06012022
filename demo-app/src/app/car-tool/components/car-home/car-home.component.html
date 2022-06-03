@@ -1,6 +1,6 @@
 <app-tool-header [headerText]="headerText"></app-tool-header>
 
-<app-car-table [cars]="cars" [editCarId]="editCarId"
+<app-car-table [cars]="cars$ | async" [editCarId]="editCarId$ | async"
   (editCar)="doEditCar($event)" (deleteCar)="doDeleteCar($event)"
   (saveCar)="doSaveCar($event)" (cancelCar)="doCancelCar()">
 </app-car-table>
