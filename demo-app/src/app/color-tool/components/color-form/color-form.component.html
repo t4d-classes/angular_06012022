@@ -1,9 +1,10 @@
 <form [formGroup]="colorForm">
-  <label>
+  <label class="one">
     Name:
     <input type="text" formControlName="name">
+    <span class="error">Name is required.</span>
   </label>
-  <label>
+  <label class="two">
     Hexcode:
     <input type="text" formControlName="hexcode">
   </label>

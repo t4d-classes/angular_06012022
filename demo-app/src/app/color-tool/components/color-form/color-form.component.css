@@ -1,0 +1,14 @@
+
+label {
+  display: block;
+}
+
+.error {
+  color: red;
+  display: none;
+}
+
+input.ng-invalid.ng-touched + .error {
+  display: inline;
+}
+

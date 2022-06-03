@@ -1,11 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import {
+  Component, OnInit, Input, Output,
+  EventEmitter, ViewEncapsulation,
+} from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NewColor, ColorForm } from '../../models/colors';
 
 @Component({
   selector: 'app-color-form',
   templateUrl: './color-form.component.html',
-  styleUrls: ['./color-form.component.css']
+  styleUrls: ['./color-form.component.css'],
+  // encapsulation: ViewEncapsulation.Emulated,
 })
 export class ColorFormComponent implements OnInit {
 
@@ -27,7 +31,8 @@ export class ColorFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.colorForm = this.fb.nonNullable.group({
-      name: '', hexcode: '',
+      name: this.fb.nonNullable.control('', [ Validators.required ]),
+      hexcode: this.fb.nonNullable.control('', [ Validators.required ]),
     });
   }
 
