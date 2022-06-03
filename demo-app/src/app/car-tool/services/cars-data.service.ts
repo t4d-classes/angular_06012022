@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Car, NewCar } from '../models/cars';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CarsDataService {
 
   constructor(private httpClient: HttpClient) { }

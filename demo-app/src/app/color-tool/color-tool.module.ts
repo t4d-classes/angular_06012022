@@ -4,6 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from '../shared/shared.module';
+import { ColorToolRoutingModule } from './color-tool-routing.module';
+
+import { ColorsDataService } from './services/colors-data.service';
 
 import { ColorHomeComponent } from './components/color-home/color-home.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
@@ -24,11 +27,15 @@ import { ColorFormComponent } from './components/color-form/color-form.component
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    ColorToolRoutingModule,
   ],
   // allow templates in other modules to
   // call ColorHomeComponent
   exports: [
     ColorHomeComponent,
+  ],
+  providers: [
+    ColorsDataService
   ]
 })
 export class ColorToolModule { }

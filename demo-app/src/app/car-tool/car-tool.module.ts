@@ -4,6 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from '../shared/shared.module';
+import { CarToolRoutingModule } from './car-tool-routing.module';
+
+import { CarsDataService } from './services/cars-data.service';
 
 import { CarFormComponent } from './components/car-form/car-form.component';
 import { CarHomeComponent } from './components/car-home/car-home.component';
@@ -26,7 +29,11 @@ import { CarEditRowComponent } from './components/car-edit-row/car-edit-row.comp
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    CarToolRoutingModule,
   ],
-  exports: [ CarHomeComponent]
+  exports: [ CarHomeComponent],
+  providers: [
+    CarsDataService
+  ]
 })
 export class CarToolModule { }
