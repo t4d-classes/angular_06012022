@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CarToolRoutingModule } from './car-tool-routing.module';
 
 import { CarsDataService } from './services/cars-data.service';
+import { CarToolStoreService } from './services/car-tool-store.service';
 
 import { CarFormComponent } from './components/car-form/car-form.component';
 import { CarHomeComponent } from './components/car-home/car-home.component';
@@ -33,7 +34,8 @@ import { CarEditRowComponent } from './components/car-edit-row/car-edit-row.comp
   ],
   exports: [ CarHomeComponent],
   providers: [
-    CarsDataService
+    CarsDataService,
+    CarToolStoreService,
   ]
 })
 export class CarToolModule { }

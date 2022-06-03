@@ -4,9 +4,7 @@ import { Car, NewCar } from '../models/cars';
 
 import { CarsDataService } from './cars-data.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CarToolStoreService {
 
   private _cars$ = new BehaviorSubject<Car[]>([]);
