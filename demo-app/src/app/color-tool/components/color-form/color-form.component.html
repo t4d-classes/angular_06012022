@@ -2,11 +2,16 @@
   <label class="one">
     Name:
     <input type="text" formControlName="name">
-    <span class="error">Name is required.</span>
+    <span class="error">
+      {{nameError}}
+    </span>
   </label>
   <label class="two">
     Hexcode:
     <input type="text" formControlName="hexcode">
+    <span class="error">
+      {{hexcodeError}}
+    </span>
   </label>
   <button (click)="doSubmitColor()">{{buttonText}}</button>
 </form>

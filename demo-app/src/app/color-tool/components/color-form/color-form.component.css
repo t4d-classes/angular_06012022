@@ -5,10 +5,10 @@ label {
 
 .error {
   color: red;
-  display: none;
+  /* display: none; */
 }
 
-input.ng-invalid.ng-touched + .error {
+/* input.ng-invalid.ng-touched + .error {
   display: inline;
-}
+} */
 
