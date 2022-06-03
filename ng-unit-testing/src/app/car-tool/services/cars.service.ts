@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { mapTo, map, concatMap } from 'rxjs/operators';
+import { concatMap, of, map } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
 
@@ -38,14 +38,18 @@ export class CarsService {
   replace(car: Car) {
     return this.one(car.id!).pipe(
       // using a concat map to start the new observable once the first one is done
-      concatMap(oldCar => this.httpClient.put<Car>(this.getMemberUrl(car.id!), car).pipe(mapTo(oldCar)))
+      concatMap(oldCar => this.httpClient
+        .put<Car>(this.getMemberUrl(car.id!), car)
+        .pipe(map(() => oldCar)))
     );
   }
 
   delete(carId: number) {
     return this.one(carId).pipe(
       // using a concat map to start the new observable once the first one is done
-      concatMap(oldCar => this.httpClient.delete<Car>(this.getMemberUrl(carId)).pipe(mapTo(oldCar)))
+      concatMap(oldCar => this.httpClient
+        .delete<Car>(this.getMemberUrl(carId))
+        .pipe(map(() => oldCar)))
     );
   }
 }
